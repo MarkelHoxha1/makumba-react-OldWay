@@ -101,11 +101,9 @@ class App extends React.Component {
             <li>{elem.lineName}</li>
             <li>
               <div>
-                <ul>
                   {
-                    <UsePromiseSample val = {elem.tasks}/>
+                     <UsePromiseSample val = {elem.tasks}/>
                   }
-                </ul>
               </div>
             </li>
             </ul>
@@ -118,16 +116,18 @@ class App extends React.Component {
 
 const UsePromiseSample = (props) => {
   //console.log(props);
-  const { resolved, loading, error } = usePromise(props.val);
+  //const { resolved, loading, error } = usePromise(props.val);
 
   //console.log(resolved);
+  props.val.then(value => {
+        value.map(el => {
+          el.map(newEl => {
+            console.log(newEl);
+               })
+        })
+      })
 
-
-  if (loading) return <div>loading...</div>;
-  if (error) return <div>error happened!</div>;
-  if (!resolved) return null;
-
-  return <div>
+  return async () =>  <div>
     { 
 
       props.val.then(value => {
