@@ -117,21 +117,30 @@ class App extends React.Component {
 }
 
 const UsePromiseSample = (props) => {
-  console.log(props);
+  //console.log(props);
   const { resolved, loading, error } = usePromise(props.val);
 
-  console.log(resolved);
+  //console.log(resolved);
+
 
   if (loading) return <div>loading...</div>;
   if (error) return <div>error happened!</div>;
   if (!resolved) return null;
 
   return <div>
-    <ul>
-    {resolved.map(el => {
-       <li> {el.end} </li>
-    })}
-    </ul>
+    { 
+
+      props.val.then(value => {
+        value.map(el => {
+          el.map(newEl => {
+            <ul>
+            <li> {newEl.end} </li>
+            <li> {newEl.startDate} </li>
+            </ul>
+          })
+        })
+      })
+    }
     </div>;
 };
 
