@@ -74,7 +74,8 @@ import { getResults, closure, runQueries, from } from "./makumba-query";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { data: [] };
+    this.state = { data: [],
+                    tasks: [] };
   }
 
   async componentDidMount() {
@@ -121,25 +122,21 @@ const UsePromiseSample = (props) => {
   //console.log(resolved);
   props.val.then(value => {
         value.map(el => {
-          el.map(newEl => {
-            console.log(newEl);
-               })
+           this.setState({tasks:  el});
         })
       })
-
+console.log(this.state.tasks);
   return async () =>  <div>
     { 
 
-      props.val.then(value => {
-        value.map(el => {
-          el.map(newEl => {
+
+          this.state.tasks.map(newEl => {
             <ul>
             <li> {newEl.end} </li>
             <li> {newEl.startDate} </li>
             </ul>
           })
-        })
-      })
+
     }
     </div>;
 };
