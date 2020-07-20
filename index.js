@@ -120,16 +120,16 @@ const UsePromiseSample = (props) => {
   //const { resolved, loading, error } = usePromise(props.val);
 
   //console.log(resolved);
+  // Here the result is displayed
   props.val.then(value => {
         value.map(el => {
            console.log(el);
         })
       })
-
+ // Here the result is not displayed
   return async () =>  <div>
     { 
-
-props.val.then(value => {
+    props.val.then(value => {
         value.map(el => {
           el.map(newEl => {
             <ul>
