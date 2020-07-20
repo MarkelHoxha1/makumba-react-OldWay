@@ -122,21 +122,23 @@ const UsePromiseSample = (props) => {
   //console.log(resolved);
   props.val.then(value => {
         value.map(el => {
-           this.setState({tasks:  el});
+           console.log(el);
         })
       })
-console.log(this.state.tasks);
+
   return async () =>  <div>
     { 
 
-
-          this.state.tasks.map(newEl => {
+props.val.then(value => {
+        value.map(el => {
+          el.map(newEl => {
             <ul>
             <li> {newEl.end} </li>
             <li> {newEl.startDate} </li>
             </ul>
           })
-
+        })
+      })
     }
     </div>;
 };
